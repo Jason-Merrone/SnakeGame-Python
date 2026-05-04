@@ -1,7 +1,7 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 import time
 from snake import Snake
-
+from apple import Apple
 screen = Screen()
 screen.setup(width=600,height=600)
 
@@ -12,6 +12,7 @@ screen.tracer(0) # Turn off the animation delay
 game_is_on = True
 
 snake = Snake()
+apple = Apple(snake)
 
 # Keypress logic
 screen.listen()
@@ -20,10 +21,12 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
-while game_is_on:
+while True:
   screen.update()
   time.sleep(.1)
 
-  snake.move()
+  snake.collide_with_apple(apple)
+  if not snake.move():
+    break
 
 screen.exitonclick()
