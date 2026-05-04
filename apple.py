@@ -3,7 +3,7 @@ from turtle import Turtle
 
 
 class Apple (Turtle):
-  def __init__(self,snake):
+  def __init__(self,snake, screen_width:int, screen_height:int):
     super().__init__()
     self.shape("square")
     self.penup()
