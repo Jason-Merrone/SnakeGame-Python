@@ -22,6 +22,7 @@ class GameState:
       return
     
     self._screen.update()
+    self._score.update_screen()
 
     if self._snake.collide_with_apple(self._apple):
         self._score.increase_score()
