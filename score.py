@@ -1,12 +1,13 @@
 from turtle import Turtle
-
+from highscore import HighScore
 SCORE_HEIGHT = 200
-SCORE_SIZE = 50
+SCORE_SIZE = 10
 
 class Score (Turtle):
   def __init__(self):
     super().__init__()
     self._score_value = -1
+    self._high_score = HighScore()
     self.penup()
     self.speed("fastest")
     self.goto(0,SCORE_HEIGHT)
@@ -15,6 +16,13 @@ class Score (Turtle):
     self.increase_score()
   
   def increase_score(self):
-    self.clear()
     self._score_value+=1
-    self.write(self._score_value,move=False,align="center",font=("Arial", SCORE_SIZE, "normal"))
+    self._update_screen()
+  
+  def _update_screen(self):
+    self.clear()
+    self.write(f"Score: {self._score_value}                   High Score: {self._high_score.high_score}",move=False,align="center",font=("Arial", SCORE_SIZE, "normal"))
+  
+  def update_high_score(self):
+    self._high_score.update(self._score_value)
+    self._update_screen()

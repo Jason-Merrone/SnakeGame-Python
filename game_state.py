@@ -4,6 +4,7 @@ from apple import Apple
 from score import Score
 from gameover import Gameover
 
+GAME_SPEED = 75 # ms 
 class GameState:
   def __init__(self, screen: Screen):
     self._screen=screen
@@ -26,8 +27,9 @@ class GameState:
         self._score.increase_score()
     
     if self._snake.move():
-      self._screen.ontimer(lambda: self._game_loop(session),100) 
+      self._screen.ontimer(lambda: self._game_loop(session),GAME_SPEED) 
     else:
+      self._score.update_high_score()
       self._gameover.display()
       self._screen.onscreenclick(lambda x, y: self._screen.bye())
 
