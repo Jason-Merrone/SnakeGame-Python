@@ -1,1 +1,2 @@
 # SnakeGame-Python
+This is a simple recreation of the classic "Snake" game in Python using the Turtle graphics library. It utilizes a deque for efficiently moving the snake, as well as a set for efficient detection of self-collisions. The snake is controlled via arrow keys and the game state can be reset at any time by pressing the "r" key. A high score is tracked which will update on the screen after the player reaches a lose condition.
